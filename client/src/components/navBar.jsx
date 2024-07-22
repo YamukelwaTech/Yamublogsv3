@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from 'react-icons/fa';
-import blog from "../assets/icons/blog.png";
+import blog from "assets";
 
 const navLinks = [
   { title: "FeedMe", url: "/" },
