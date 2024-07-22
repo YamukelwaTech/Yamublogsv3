@@ -1,7 +1,7 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import blog from "assets";
+import assets from "assets";
 
 const navLinks = [
   { title: "Feed", url: "/" },
@@ -21,7 +21,7 @@ const NavBar = () => {
       <div className="flex justify-between items-center">
         <div className="text-cColor2 font-bold text-xl flex items-center">
           YamukelwaBlogs
-          <img src={blog} alt="Blog Icon" className="ml-2 h-6 w-6" />
+          <img src={assets.blog} alt="Blog Icon" className="ml-2 h-6 w-6" />
         </div>
         <div className="flex items-center gap-4 md:hidden">
           {showModal ? (

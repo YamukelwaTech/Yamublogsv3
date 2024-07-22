@@ -1,3 +1,5 @@
+import assets from "assets";
+
 const heroSection = () => {
   return (
     <section className=" py-10 sm:py-16 lg:py-24">
@@ -44,11 +46,7 @@ const heroSection = () => {
           </div>
 
           <div>
-            <img
-              className="w-full"
-              src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/2/hero-img.png"
-              alt=""
-            />
+            <img className="w-full" src={assets.people} alt="Group of people" />
           </div>
         </div>
       </div>
