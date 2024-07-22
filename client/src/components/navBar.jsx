@@ -17,7 +17,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="w-full bg-customColor1 py-4 px-4 md:py-7 md:px-8 lg:px-44 sticky top-0 z-50">
+    <nav className="w-full py-4 px-4 md:py-7 md:px-8 lg:px-44 sticky top-0 z-50">
       <div className="flex justify-between items-center">
         <div className="text-customColor2 font-bold text-xl flex items-center">
           YamukelwaBlogs
@@ -52,10 +52,10 @@ const NavBar = () => {
       {showModal && (
         <div className="fixed inset-0 z-50 flex justify-center items-center">
           <div
-            className="absolute inset-0 bg-customColor1 opacity-90"
+            className="absolute inset-0 opacity-90"
             onClick={handleToggleModal}
           />
-          <div className="relative bg-customColor1 w-full max-w-sm mx-auto p-8 rounded-lg">
+          <div className="relative w-full max-w-sm mx-auto p-8 rounded-lg">
             <div className="flex flex-col gap-4 items-center justify-center">
               {navLinks.map((link, index) => (
                 <span
