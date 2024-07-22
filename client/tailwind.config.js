@@ -13,6 +13,25 @@ export default {
       height: {
         128: "52rem",
       },
+      keyframes: {
+        spin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideIn: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        spin: "spin 4s linear infinite",
+        fadeIn: "fadeIn 1.2s ease-out",
+        slideIn: "slideIn 0.9s ease-out",
+      },
     },
   },
   plugins: [],

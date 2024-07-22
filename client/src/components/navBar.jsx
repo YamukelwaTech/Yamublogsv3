@@ -4,8 +4,8 @@ import { useState } from "react";
 import blog from "assets";
 
 const navLinks = [
-  { title: "FeedMe", url: "/" },
-  { title: "PostUp", url: "/blog" },
+  { title: "Feed", url: "/" },
+  { title: "PostUps", url: "/blog" },
   { title: "PostMe", url: "/newpost" },
 ];
 
@@ -19,15 +19,15 @@ const NavBar = () => {
   return (
     <nav className="w-full py-4 px-4 md:py-7 md:px-8 lg:px-44 sticky top-0 z-50">
       <div className="flex justify-between items-center">
-        <div className="text-customColor2 font-bold text-xl flex items-center">
+        <div className="text-cColor2 font-bold text-xl flex items-center">
           YamukelwaBlogs
           <img src={blog} alt="Blog Icon" className="ml-2 h-6 w-6" />
         </div>
-        <div className="flex items-center gap-4 text-customColor2 md:hidden">
+        <div className="flex items-center gap-4 md:hidden">
           {showModal ? (
             <FaTimes
               onClick={handleToggleModal}
-              className="text-customColor2 cursor-pointer"
+              className="text-cColor4 cursor-pointer animate-spin "
               aria-label="Close menu"
             />
           ) : (
@@ -42,7 +42,7 @@ const NavBar = () => {
           {navLinks.map((link, index) => (
             <li
               key={index}
-              className="text-customColor2 font-bold text-l hover:underline"
+              className="text-cColor2 font-bold text-l hover:underline"
             >
               <Link to={link.url}>{link.title}</Link>
             </li>
@@ -52,16 +52,15 @@ const NavBar = () => {
       {showModal && (
         <div className="fixed inset-0 z-50 flex justify-center items-center">
           <div
-            className="absolute inset-0 opacity-90"
+            className="bg-cColor2 absolute inset-0 opacity-80 animate-fadeIn"
             onClick={handleToggleModal}
           />
-          <div className="relative w-full max-w-sm mx-auto p-8 rounded-lg">
+          <div className="relative w-full max-w-sm mx-auto p-8 rounded-lg ">
             <div className="flex flex-col gap-4 items-center justify-center">
               {navLinks.map((link, index) => (
                 <span
                   key={index}
-                  className="text-customColor2 font-bold text-lg cursor-pointer hover:underline"
-                  onClick={handleToggleModal}
+                  className=" font-bold text-xl cursor-pointer hover:underline transition-colors duration-100 ease-in-out"
                 >
                   <Link to={link.url}>{link.title}</Link>
                 </span>
