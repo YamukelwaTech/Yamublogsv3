@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import blog from "assets";
 
 const navLinks = [
@@ -24,11 +24,19 @@ const NavBar = () => {
           <img src={blog} alt="Blog Icon" className="ml-2 h-6 w-6" />
         </div>
         <div className="flex items-center gap-4 text-customColor2 md:hidden">
-          <FaBars
-            onClick={handleToggleModal}
-            className="text-customColor2 cursor-pointer"
-            aria-label="Open menu"
-          />
+          {showModal ? (
+            <FaTimes
+              onClick={handleToggleModal}
+              className="text-customColor2 cursor-pointer"
+              aria-label="Close menu"
+            />
+          ) : (
+            <FaBars
+              onClick={handleToggleModal}
+              className="text-customColor2 cursor-pointer"
+              aria-label="Open menu"
+            />
+          )}
         </div>
         <ul className="hidden md:flex gap-4 md:gap-8 items-center justify-center text-center cursor-pointer">
           {navLinks.map((link, index) => (
@@ -43,12 +51,9 @@ const NavBar = () => {
       </div>
       {showModal && (
         <div className="fixed inset-0 z-50 flex justify-center items-center">
-          <div className="absolute inset-0 bg-customColor1 opacity-90" />
-          <FaTimes
-            className="absolute top-6 right-6 text-customColor2 cursor-pointer"
+          <div
+            className="absolute inset-0 bg-customColor1 opacity-90"
             onClick={handleToggleModal}
-            style={{ fontSize: "24px" }}
-            aria-label="Close menu"
           />
           <div className="relative bg-customColor1 w-full max-w-sm mx-auto p-8 rounded-lg">
             <div className="flex flex-col gap-4 items-center justify-center">
