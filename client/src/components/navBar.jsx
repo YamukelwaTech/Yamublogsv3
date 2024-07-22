@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`w-full bg-customColor1 ${isMobile ? "py-4 px-4" : "py-7 px-8 md:px-44"} sticky top-0 z-50`}>
+    <nav className={`w-full bg-cColor1 ${isMobile ? "py-4 px-4" : "py-7 px-8 md:px-44"} sticky top-0 z-50`}>
       <div className="flex justify-between items-center">
         <div className="text-customColor2 font-bold text-xl flex items-center">
           YamukelwaBlogs
