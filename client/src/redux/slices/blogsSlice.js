@@ -3,16 +3,31 @@ import axios from "axios";
 
 const backendUrl = "https://blogbackend-yy9j.onrender.com";
 
-export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  const response = await axios.get(`${backendUrl}/posts`);
-  return response.data;
-});
+export const fetchBlogs = createAsyncThunk(
+  "blogs/fetchBlogs",
+  async (_, { getState }) => {
+    const { blogs } = getState().blogs;
+    if (blogs.length === 0) {
+      const response = await axios.get(`${backendUrl}/posts`);
+      return response.data;
+    }
+    return [];
+  }
+);
+
+export const addNewBlog = createAsyncThunk(
+  "blogs/addNewBlog",
+  async (newBlog) => {
+    const response = await axios.post(`${backendUrl}/posts`, newBlog);
+    return response.data;
+  }
+);
 
 const blogsSlice = createSlice({
   name: "blogs",
   initialState: {
     blogs: [],
-    loading: true,
+    loading: false,
     error: null,
     logged: false,
   },
@@ -30,12 +45,20 @@ const blogsSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchBlogs.fulfilled, (state, action) => {
-        state.blogs = action.payload;
+        if (action.payload.length > 0) {
+          state.blogs = action.payload;
+        }
         state.loading = false;
       })
       .addCase(fetchBlogs.rejected, (state, action) => {
         state.error = action.error.message;
         state.loading = false;
+      })
+      .addCase(addNewBlog.fulfilled, (state, action) => {
+        state.blogs.push(action.payload);
+      })
+      .addCase(addNewBlog.rejected, (state, action) => {
+        state.error = action.error.message;
       });
   },
 });
