@@ -2,7 +2,7 @@ import assets from "assets";
 
 const heroSection = () => {
   return (
-    <section className=" py-10 sm:py-16 lg:py-24">
+    <section className="py-10 sm:py-16 lg:py-24">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
@@ -34,7 +34,7 @@ const heroSection = () => {
               </svg>
             </button>
 
-            <p className="mt-5 text-gray-600">
+            <p className="mt-5 text-cColor2">
               Already a bloger?{" "}
               <button
                 type="button"

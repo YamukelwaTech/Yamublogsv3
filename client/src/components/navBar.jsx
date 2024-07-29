@@ -17,7 +17,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="w-full py-4 px-4 md:py-7 md:px-8 lg:px-44 sticky top-0 z-50">
+    <nav className="w-full py-4 px-4 md:py-7 md:px-8 lg:px-44 sticky top-0 z-50 bg-cColor1">
       <div className="flex justify-between items-center">
         <div className="text-cColor2 font-bold text-xl flex items-center">
           YamukelwaBlogs
