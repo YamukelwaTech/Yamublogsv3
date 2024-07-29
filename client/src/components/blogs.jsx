@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import assets from "assets";
 
 const backendUrl = "https://blogbackend-yy9j.onrender.com";
 
@@ -86,23 +85,6 @@ const Blog = () => {
         </div>
       ) : (
         <>
-          <div className="flex items-end justify-between mb-12 header">
-            <div className="title md:ml-20">
-              <p className="mb-4 text-3xl font-bold text-customColor2">
-                Latest YamuBlogs
-              </p>
-              <p className="text-sm md:text-xl font-semibold text-customColor2 flex items-center">
-                All articles are verified
-                <span className="ml-2 text-customColor2">
-                  <img
-                    src={assets.check}
-                    alt="Right Icon"
-                    className="h-4 w-4 md:h-6 md:w-6"
-                  />
-                </span>
-              </p>
-            </div>
-          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {articles.length > 0 &&
               articles.map((article) => (
@@ -116,24 +98,17 @@ const Blog = () => {
                           article.backgroundimg || "/images/blog/default.jpg"
                         })`,
                       }}
-                      title={article.title}
                     />
                   </Link>
                   <div className="mt-3 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
                     <div>
                       <Link
-                        to={`/category/${article.category}`}
-                        className="text-xs text-indigo-600 uppercase font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-                      >
-                        {article.category}
-                      </Link>
-                      <Link
                         to={`/post/${article.token}`}
-                        className="block text-gray-900 font-bold text-2xl mb-2 hover:text-indigo-600 transition duration-500 ease-in-out"
+                        className="block text-cColor2 font-bold text-2xl mb-2 hover:text-cColor4 transition duration-500 ease-in-out"
                       >
                         {article.title}
                       </Link>
-                      <p className="text-gray-700 text-base mt-2">
+                      <p className="text-gray-700 text-base mt-2 font-semibold">
                         {article.description}
                       </p>
                     </div>
