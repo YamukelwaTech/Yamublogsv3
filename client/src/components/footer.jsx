@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-screen-xl py-10 px-4 sm:px-6 text-gray-800 sm:flex justify-between mx-auto">
         <div className="p-5 sm:w-4/12">
           <div className="flex items-center mb-4">
-            <h3 className="font-bold text-xl text-cColor2">YamukelwaBlogs</h3>
+            <h3 className="font-bold text-xl text-cColor2">YamuBlogs</h3>
             <img src={assets.blog} alt="Blog Icon" className="ml-2 h-6 w-6" />
           </div>
           <p className="text-gray-500 text-sm mb-5 font-semibold">

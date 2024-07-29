@@ -20,7 +20,7 @@ const NavBar = () => {
     <nav className="w-full py-4 px-4 md:py-7 md:px-8 lg:px-44 sticky top-0 z-50 bg-cColor1">
       <div className="flex justify-between items-center">
         <div className="text-cColor2 font-bold text-xl flex items-center">
-          YamukelwaBlogs
+          YamuBlogs
           <img src={assets.blog} alt="Blog Icon" className="ml-2 h-6 w-6" />
         </div>
         <div className="flex items-center gap-4 md:hidden">
