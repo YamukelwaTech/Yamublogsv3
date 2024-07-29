@@ -12,7 +12,7 @@ export default defineConfig({
       assets: "/src/assets",
       icons: "/src/assets/icons",
       tailwind: "/src/tailwind",
-      pages: "src/pages",
+      pages: "/src/pages",
       lib: "/src/lib",
     },
   },

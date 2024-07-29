@@ -1,9 +1,10 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import assets from "./assets";
+import assets from "assets";
 
-const Home = lazy(() => import("./pages/HomePage"));
+const Home = lazy(() => import('pages/HomePage'));
+const Blogs = lazy(() => import('pages/PostUps'));
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
         </Routes>
       </Router>
     </Suspense>

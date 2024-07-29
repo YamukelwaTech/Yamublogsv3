@@ -5,7 +5,7 @@ import assets from "assets";
 
 const navLinks = [
   { title: "Feed", url: "/" },
-  { title: "PostUps", url: "/blog" },
+  { title: "PostUps", url: "/blogs" },
   { title: "PostMe", url: "/newpost" },
 ];
 
