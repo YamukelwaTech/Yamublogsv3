@@ -3,7 +3,9 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setBlogView, setDefaultView } from "slices/navSlice";
-import assets from "assets"; 
+
+import assets from "assets";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { title: "Feed", url: "/" },
@@ -29,18 +31,22 @@ const NavBar = () => {
     }
   }, [location, dispatch]);
 
-  useEffect(() => {
-    console.log("Current icon key:", icon);
-    console.log("Icon from assets:", assets[icon]);
-  }, [icon]);
-
   return (
     <nav className="w-full py-4 px-4 md:py-7 md:px-8 lg:px-44 sticky top-0 z-50 bg-cColor1">
       <div className="flex justify-between items-center">
-        <div className="text-cColor2 font-bold text-xl flex items-center">
-          {title}
-          <img src={assets[icon]} alt="Icon" className="ml-2 h-6 w-6" />
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            className="text-cColor2 font-bold text-xl flex items-center"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ duration: 2, ease: "easeInOut" }}  
+          >
+            {title}
+            <img src={assets[icon]} alt="Icon" className="ml-2 h-6 w-6" />
+          </motion.div>
+        </AnimatePresence>
         <div className="flex items-center gap-4 md:hidden">
           {showModal ? (
             <FaTimes
