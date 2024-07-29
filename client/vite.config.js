@@ -14,6 +14,8 @@ export default defineConfig({
       tailwind: "/src/tailwind",
       pages: "/src/pages",
       lib: "/src/lib",
+      redux: "/src/redux",
+      slices: "/src/redux/slices"
     },
   },
 });

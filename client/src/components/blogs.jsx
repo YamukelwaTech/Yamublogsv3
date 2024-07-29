@@ -1,44 +1,21 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
-const backendUrl = "https://blogbackend-yy9j.onrender.com";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlogs, logBlogs } from "../redux/slices/blogsSlice";
 
 const Blog = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [logged, setLogged] = useState(false);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const { blogs, loading, error, logged } = useSelector((state) => state.blogs);
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await axios.get(`${backendUrl}/posts`);
-        console.log(response.data); // Log the response
-        if (Array.isArray(response.data)) {
-          setArticles(response.data);
-        } else {
-          throw new Error("Unexpected response format");
-        }
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching articles:", err);
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
-    fetchArticles();
-  }, []);
+    dispatch(fetchBlogs());
+  }, [dispatch]);
 
   useEffect(() => {
-    if (!loading && articles.length > 0 && !logged) {
-      articles.forEach((article) => {
-        console.log("Token:", article.token);
-      });
-      setLogged(true);
+    if (!loading && blogs.length > 0 && !logged) {
+      dispatch(logBlogs());
     }
-  }, [articles, loading, logged]);
+  }, [blogs, loading, logged, dispatch]);
 
   const [loadingMessage, setLoadingMessage] = useState(
     "Fetching all the latest posts..."
@@ -84,39 +61,35 @@ const Blog = () => {
           </p>
         </div>
       ) : (
-        <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {articles.length > 0 &&
-              articles.map((article) => (
-                <div key={article.token} className="col-span-1">
-                  <Link to={`/post/${article.token}`}>
-                    <div
-                      className="bg-cover text-center overflow-hidden"
-                      style={{
-                        minHeight: "300px",
-                        backgroundImage: `url(${
-                          article.backgroundimg || "/images/blog/default.jpg"
-                        })`,
-                      }}
-                    />
-                  </Link>
-                  <div className="mt-3 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
-                    <div>
-                      <Link
-                        to={`/post/${article.token}`}
-                        className="block text-cColor2 font-bold text-2xl mb-2 hover:text-cColor4 transition duration-500 ease-in-out"
-                      >
-                        {article.title}
-                      </Link>
-                      <p className="text-gray-700 text-base mt-2 font-semibold">
-                        {article.description}
-                      </p>
-                    </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          {blogs.length > 0 &&
+            blogs.map((blog) => (
+              <div key={blog.token} className="col-span-1">
+                <div
+                  className="bg-cover text-center overflow-hidden"
+                  style={{
+                    minHeight: "300px",
+                    backgroundImage: `url(${
+                      blog.backgroundimg || "/images/blog/default.jpg"
+                    })`,
+                  }}
+                />
+                <div className="mt-3 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+                  <div>
+                    <Link
+                      to={`/post/${blog.token}`}
+                      className="block text-cColor2 font-bold text-2xl mb-2 hover:text-cColor4 transition duration-500 ease-in-out"
+                    >
+                      {blog.title}
+                    </Link>
+                    <p className="text-cColor2 text-base mt-2 font-semibold">
+                      {blog.description}
+                    </p>
                   </div>
                 </div>
-              ))}
-          </div>
-        </>
+              </div>
+            ))}
+        </div>
       )}
     </div>
   );
