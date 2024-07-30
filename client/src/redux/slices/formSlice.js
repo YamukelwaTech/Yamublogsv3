@@ -26,13 +26,14 @@ const formSlice = createSlice({
     builder
       .addCase(addNewBlog.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(addNewBlog.fulfilled, (state) => {
         state.loading = false;
       })
       .addCase(addNewBlog.rejected, (state, action) => {
-        state.error = action.error.message;
         state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

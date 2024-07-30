@@ -48,15 +48,12 @@ const Form = () => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.title) newErrors.title = "Main title is required";
-    if (!formData.description)
-      newErrors.description = "Article title is required";
+    if (!formData.description) newErrors.description = "Article title is required";
     if (!formData.content) newErrors.content = "Content is required";
     if (!formData.author.name) newErrors.authorName = "Author name is required";
-    if (!formData.author.email)
-      newErrors.authorEmail = "Author email is required";
+    if (!formData.author.email) newErrors.authorEmail = "Author email is required";
     if (!formData.imageURL) newErrors.imageURL = "Main image is required";
-    if (!formData.backgroundimg)
-      newErrors.backgroundimg = "Background image is required";
+    if (!formData.backgroundimg) newErrors.backgroundimg = "Background image is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -78,12 +75,11 @@ const Form = () => {
     try {
       await dispatch(addNewBlog(formDataToSend));
       await dispatch(fetchBlogs());
-      navigate("/blog");
+      navigate("/blogs");
     } catch (error) {
       console.error("Upload failed:", error.message);
     }
   };
-
   return (
     <div className="w-full p-4 md:p-8 lg:p-12 bg-customColor1 mt-8">
       <form onSubmit={handleSubmit}>
