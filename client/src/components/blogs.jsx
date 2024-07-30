@@ -58,29 +58,34 @@ const Blog = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
           {blogs.length > 0 &&
             blogs.map((blog) => (
-              <div key={blog.token} className="col-span-1">
-                <div
-                  className="bg-cover text-center overflow-hidden"
-                  style={{
-                    minHeight: "300px",
-                    backgroundImage: `url(${
-                      blog.backgroundimg || "/images/blog/default.jpg"
-                    })`,
-                  }}
-                />
-                <div className="mt-3 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
-                  <div>
-                    <Link
-                      to={`/post/${blog.token}`}
-                      className="block text-cColor2 font-bold text-2xl mb-2 hover:text-cColor4 transition duration-500 ease-in-out"
-                    >
-                      {blog.title}
-                    </Link>
-                    <p className="text-cColor2 text-base mt-2 font-semibold">
-                      {blog.description}
-                    </p>
-                  </div>
+              <div
+                key={blog.token}
+                className="col-span-1 relative group border-4 border-cColor3 rounded-lg overflow-hidden transition duration-300 ease-in-out hover:border-cColor2 hover:bg-cColor2"
+              >
+                <div className="relative">
+                  <div
+                    className="bg-cover text-center overflow-hidden transition-all duration-300 ease-in-out"
+                    style={{
+                      minHeight: "300px",
+                      backgroundImage: `url(${
+                        blog.backgroundimg || "/images/blog/default.jpg"
+                      })`,
+                    }}
+                  />
+                  <div className="absolute inset-0 border-b-4 border-cColor3 group-hover:border-cColor2 transition duration-300 ease-in-out"></div>
                 </div>
+                <div className="p-5 transition-all duration-300 ease-in-out group-hover:text-white">
+                  <Link
+                    to={`/post/${blog.token}`}
+                    className="block text-cColor2 font-bold text-2xl mb-2 group-hover:text-white transition duration-500 ease-in-out"
+                  >
+                    {blog.title}
+                  </Link>
+                  <p className="text-cColor2 text-base font-semibold group-hover:text-white transition duration-300 ease-in-out">
+                    {blog.description}
+                  </p>
+                </div>
+                <span className="absolute inset-0 bg-customColor1 opacity-20 group-hover:opacity-40 transition duration-300 ease-in-out"></span>
               </div>
             ))}
         </div>
