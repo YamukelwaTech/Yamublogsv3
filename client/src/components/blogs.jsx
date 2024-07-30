@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBlogs } from "slices/blogsSlice"; 
+import { fetchBlogs } from "slices/blogsSlice";
 
 const Blog = () => {
   const dispatch = useDispatch();
