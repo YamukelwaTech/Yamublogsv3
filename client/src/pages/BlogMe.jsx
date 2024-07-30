@@ -2,7 +2,7 @@ import NavBar from "components/navBar";
 import Footer from "components/footer";
 import Blogs from "components/blogs";
 
-function Postups() {
+function BlogMe() {
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
@@ -14,4 +14,4 @@ function Postups() {
   );
 }
 
-export default Postups;
+export default BlogMe;

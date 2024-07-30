@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setBlogView, setDefaultView, setAnimation } from "slices/navSlice";
+import { setBlogView, setDefaultView, setNewBlogView, setAnimation } from "slices/navSlice";
 
 import assets from "assets";
 import { motion, AnimatePresence } from "framer-motion";
@@ -34,6 +34,8 @@ const NavBar = () => {
 
     if (location.pathname === "/blogs") {
       dispatch(setBlogView());
+    } else if (location.pathname === "/newblog") {
+      dispatch(setNewBlogView());
     } else {
       dispatch(setDefaultView());
     }

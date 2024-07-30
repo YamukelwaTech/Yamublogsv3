@@ -3,8 +3,9 @@ import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import assets from "assets";
 
-const Home = lazy(() => import('pages/HomePage'));
-const Blogs = lazy(() => import('pages/PostUps'));
+const Home = lazy(() => import("pages/HomePage"));
+const Blogs = lazy(() => import("pages/YaBlogs"));
+const Post = lazy(() => import("pages/BlogMe"));
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/newblog" element={<Post />} />
         </Routes>
       </Router>
     </Suspense>
